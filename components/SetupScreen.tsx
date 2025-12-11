@@ -42,10 +42,10 @@ export const SetupScreen: React.FC<SetupScreenProps> = ({
   const canStart = !!selectedModule && !!selectedSession;
 
   return (
-    <div className="max-w-2xl mx-auto p-4 md:p-0 mt-8 md:mt-16">
+    <div className="max-w-2xl mx-auto p-4 md:p-0 mt-2 md:mt-16 pb-12">
       {/* Resume Banner in Setup (if applicable to this course) */}
       {activeSessionLabel && onResume && (
-        <div className="mb-6 animate-fade-in-up">
+        <div className="mb-4 md:mb-6 animate-fade-in-up">
           <div className="bg-white rounded-xl p-4 shadow-md border border-slate-200 flex items-center justify-between">
             <div className="flex items-center gap-3">
               <div className="bg-emerald-100 p-2 rounded-full">
@@ -67,12 +67,16 @@ export const SetupScreen: React.FC<SetupScreenProps> = ({
                 <p className="text-slate-500 text-xs font-bold uppercase tracking-wider">
                   In Progress
                 </p>
-                <p className="text-slate-900 font-semibold">
+                <p className="text-slate-900 font-semibold text-sm md:text-base">
                   {activeSessionLabel}
                 </p>
               </div>
             </div>
-            <Button size="sm" onClick={onResume} className="shadow-emerald-100">
+            <Button
+              size="sm"
+              onClick={onResume}
+              className="shadow-emerald-100 whitespace-nowrap"
+            >
               Resume
             </Button>
           </div>
@@ -81,11 +85,11 @@ export const SetupScreen: React.FC<SetupScreenProps> = ({
 
       <div className="bg-white rounded-2xl shadow-xl shadow-slate-200/50 border border-slate-100 overflow-hidden">
         {/* Header */}
-        <div className="bg-slate-50 px-8 py-6 border-b border-slate-100 flex items-center justify-between">
+        <div className="bg-slate-50 px-6 py-5 md:px-8 md:py-6 border-b border-slate-100 flex items-center justify-between">
           <div className="flex items-center">
             <button
               onClick={onBack}
-              className="mr-4 text-slate-400 hover:text-emerald-600 transition-colors bg-white p-2 rounded-full shadow-sm border border-slate-200 hover:border-emerald-200"
+              className="mr-3 md:mr-4 text-slate-400 hover:text-emerald-600 transition-colors bg-white p-2 rounded-full shadow-sm border border-slate-200 hover:border-emerald-200 flex-shrink-0"
               title="Back to courses"
             >
               <svg
@@ -102,31 +106,31 @@ export const SetupScreen: React.FC<SetupScreenProps> = ({
                 />
               </svg>
             </button>
-            <div>
-              <span className="text-emerald-600 text-xs font-bold tracking-widest uppercase mb-1 block">
+            <div className="overflow-hidden">
+              <span className="text-emerald-600 text-[10px] md:text-xs font-bold tracking-widest uppercase mb-0.5 block truncate">
                 Course Configuration
               </span>
-              <h1 className="text-xl md:text-2xl font-bold text-slate-900 leading-none">
+              <h1 className="text-lg md:text-2xl font-bold text-slate-900 leading-tight truncate">
                 {course.title}
               </h1>
             </div>
           </div>
-          <div className="hidden md:block text-right">
+          <div className="hidden md:block text-right flex-shrink-0 ml-4">
             <span className="text-4xl font-black text-slate-100">
               {course.code.split(" ")[1]}
             </span>
           </div>
         </div>
 
-        <div className="p-8 space-y-8 min-h-[300px]">
-          <div className="grid gap-6">
+        <div className="p-5 md:p-8 space-y-6 md:space-y-8">
+          <div className="grid gap-5 md:gap-6">
             <div className="space-y-2">
               <label className="text-sm font-semibold text-slate-700 ml-1">
                 Select Module
               </label>
               <div className="relative">
                 <select
-                  className="w-full pl-4 pr-10 py-4 text-base border border-slate-200 rounded-xl focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 bg-slate-50/50 appearance-none transition-shadow hover:border-slate-300"
+                  className="w-full pl-4 pr-10 py-3.5 md:py-4 text-base border border-slate-200 rounded-xl focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 bg-slate-50/50 appearance-none transition-shadow hover:border-slate-300"
                   onChange={handleModuleChange}
                   value={selectedModule?.id || ""}
                 >
@@ -163,7 +167,7 @@ export const SetupScreen: React.FC<SetupScreenProps> = ({
               </label>
               <div className="relative">
                 <select
-                  className="w-full pl-4 pr-10 py-4 text-base border border-slate-200 rounded-xl focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 bg-slate-50/50 appearance-none disabled:opacity-50 disabled:bg-slate-100 transition-shadow hover:border-slate-300"
+                  className="w-full pl-4 pr-10 py-3.5 md:py-4 text-base border border-slate-200 rounded-xl focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 bg-slate-50/50 appearance-none disabled:opacity-50 disabled:bg-slate-100 transition-shadow hover:border-slate-300"
                   onChange={(e) => setSelectedSession(e.target.value)}
                   disabled={!selectedModule}
                   value={selectedSession}
@@ -196,11 +200,11 @@ export const SetupScreen: React.FC<SetupScreenProps> = ({
             </div>
           </div>
 
-          <div className="bg-gradient-to-br from-slate-50 to-slate-100 p-5 rounded-xl border border-slate-200 flex items-start gap-4">
-            <div className="bg-white p-2 rounded-lg shadow-sm border border-slate-100 text-emerald-600">
+          <div className="bg-gradient-to-br from-slate-50 to-slate-100 p-4 md:p-5 rounded-xl border border-slate-200 flex items-start gap-3 md:gap-4">
+            <div className="bg-white p-2 rounded-lg shadow-sm border border-slate-100 text-emerald-600 flex-shrink-0">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                className="h-6 w-6"
+                className="h-5 w-5 md:h-6 md:w-6"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
@@ -236,7 +240,7 @@ export const SetupScreen: React.FC<SetupScreenProps> = ({
               selectedModule && onStart(selectedModule.title, selectedSession)
             }
             disabled={!canStart}
-            className="shadow-lg shadow-emerald-200"
+            className="shadow-lg shadow-emerald-200 py-3.5 md:py-3.5"
           >
             Start Practice Exam
           </Button>
