@@ -12,10 +12,10 @@ export default defineConfig(({ mode }) => {
     plugins: [react()],
     define: {
       "process.env.API_KEY": JSON.stringify(
-        env.KEY || "AIzaSyCf5ObDfBi9HSejc7gwqCmx_fAef2SaX98"
+        env.KEY || "AIzaSyD8eMhmQpAxJNduofhrV-SddaclRoMTb6o"
       ),
       "process.env.KEY": JSON.stringify(
-        env.KEY || "AIzaSyCf5ObDfBi9HSejc7gwqCmx_fAef2SaX98"
+        env.KEY || "AIzaSyD8eMhmQpAxJNduofhrV-SddaclRoMTb6o"
       ),
     },
     resolve: {
